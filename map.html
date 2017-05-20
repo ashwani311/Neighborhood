@@ -15,26 +15,34 @@
 			<div class = "row">
 				<div id="rohini" class = "col-xs-12 col-sm-5 col-md-3 ">
 					<h1 class="center">Rohini Map</h1>
+					<div class="input-group">
+						<input id='msg' type="text" class="form-control" placeholder="Places" data-bind="value: sText, valueUpdate: 'afterkeydown'">
+						<span class="input-group-btn">
+							<button  class="btn btn-default" type="button" data-bind="click: searchIt">Search</button>
+						</span>
+					</div><!-- /input-group -->
 					<div class="list-group">
-						<a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-						<a href="#" class="list-group-item">Morbi leo risus</a>
-						<a href="#" class="list-group-item">Porta ac consectetur ac</a>
-						<a href="#" class="list-group-item">Vestibulum at eros</a>
-						<a href="#" class="list-group-item">Lorem Ipsum</a>
+				    <!-- ko foreach: rests -->
+                      <!-- ko if: show -->
+						<a href="#" class="list-group-item" data-bind="text: title, click: $parent.minfo"></a>
+				      <!-- /ko -->
+                    <!-- /ko -->
 					</div>
+
 				</div>
 				<div class = "col-xs-12 col-sm-7 col-md-9 no-padding">
 					<div id="map">
 					</div>
 				</div>
 			</div>
+
 		</div>
 		<script>
 			var map;
 			function initMap() {
 			  map = new google.maps.Map(document.getElementById('map'), {
-			    center: {lat: 28.7495, lng: 77.0565},
-			    zoom: 12
+			    center: {lat: 28.7295, lng: 77.0965},
+			    zoom: 13
 			  });
 			  markerdata = new google.maps.InfoWindow();
 			  ko.applyBindings(new model());
@@ -50,4 +58,3 @@
 		<script src="js/main.js"></script>
 	</body>
 </html>
-
